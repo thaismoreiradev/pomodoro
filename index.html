@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="./main.css">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header>
+        <!-- title -->
+        <h1>Pomodoro</h1>
+    </header>
+
+    <main>
+        <!-- container painel -->
+        <div class="bg-red-500">
+            <p id="work">work</p>
+            <p id="break">break</p>
+        </div>
+
+        <!-- container timer -->
+        <div>
+            <!-- circle -->
+           <div>
+                <!-- time -->
+                <div>
+                  <p id="minutes">25</p>  
+                  <p>:</p>
+                  <p id="seconds">00</p>
+                </div>
+           </div>
+        </div>
+
+        <!-- controls -->
+        <div>
+            <button id="start">
+                <i class="fa-solid fa-play"></i>
+            </button>
+            <button id="restart">
+                <i class="fa-solid fa-rotate-left"></i>
+            </button>
+        </div>
+
+    </main>
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
