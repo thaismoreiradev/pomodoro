@@ -5,72 +5,95 @@ let breakTitle = document.querySelector("#break");
 let activeTitle = ("font-weight: bolder")
 let inactiveTitle = ("font-weight: normal")
 
-let workTime = 1;
-let breakTime = 2;
-let seconds = "00";
+let playing = false;
+
+let working = true;
+
+
+let timer;
+
+
+let minutes = 24;
+let seconds = 59;
+
+let workMinutes;
+let breakMinutes;
 
 // display
 window.onload = () => {
-    document.getElementById("minutes").innerHTML = workTime;
-    document.getElementById("seconds").innerHTML = seconds;
+    // document.getElementById("minutes").innerHTML = minutes;
+    // document.getElementById("seconds").innerHTML = seconds;
     workTitle.style = activeTitle;
 }
 
-// starting timer
-const startingTimer = () => {
 
-    // changing buttons play and pause
-    document.getElementById("play-pause").classList.remove("fa-play");
-    document.getElementById("play-pause").classList.add("fa-pause");
 
-    seconds = 59;
-    let workMinutes = workTime - 1;
-    let breakMinutes = breakTime - 1;
-    breakCount = 0;
 
-    // countdown
+// countdown
     let timerFunction = () => {
         // starting with work 25 minutes
-        document.getElementById("minutes").innerHTML = workMinutes;
+        document.getElementById("minutes").innerHTML = minutes;
         document.getElementById("seconds").innerHTML = seconds;    
 
+        console.log(seconds)
+
         // starting here
+        
         seconds = seconds - 1;
         
         // when every work minute is over
         if(seconds === 0){
             
-            workMinutes = workMinutes - 1;
+            minutes = minutes - 1;
             seconds = 59;
 
-            if(workMinutes === -1){
-                if(breakCount % 2 === 0){
-                    // starting break for 5 minutes
-                    workMinutes = breakMinutes;
-                    breakCount++
+            // when the 25 minutes ends
+            if(minutes === -1){
+                working = !working
 
+                if(working === false){
                     // changing the word in focus
                     workTitle.style = inactiveTitle;
                     breakTitle.style = activeTitle;
-                }else{
-                    // back to workingtime 25 minutes
-                    workMinutes = workTime;
-                    breakCount++
+                    // starting break for 5 minutes
+                    minutes = 4;
 
+                }else{
                     // changing the word in focus
-                    breakTitle.style.inactiveTitle;
-                    workTitle.style.activeTitle;                }
+                    workTitle.style = activeTitle;
+                    breakTitle.style = inactiveTitle;
+                    // starting break for 5 minutes
+                    minutes = 24;
+                }
 
             }
-
-
-
-            
         }
-
     }
 
 
-    // starting countdown 1 sec
-    setInterval(timerFunction, 1000); 
+// starting timer
+const startingTimer = () => {
+    
+    if(playing === false){
+        playing = true;
+        // changing buttons play and pause
+        document.getElementById("play-pause").classList.remove("fa-play");
+        document.getElementById("play-pause").classList.add("fa-pause");
+
+        // seconds = 59;
+        // minutes = minutes -1
+
+        // starting countdown 1 sec
+        timer = setInterval(timerFunction, 10); 
+    }else{
+
+        playing = false;
+        // changing buttons play and pause
+        document.getElementById("play-pause").classList.add("fa-play");
+        document.getElementById("play-pause").classList.remove("fa-pause");
+
+        clearInterval(timer);
+    }
+
+
 }
