@@ -1,5 +1,4 @@
 // variables
-
 let workTitle = document.querySelector("#work");
 let breakTitle = document.querySelector("#break");
 let activeTitle = ("font-weight: bolder")
@@ -13,72 +12,78 @@ let working = true;
 
 let timer;
 
-let workingMinutes = true;
-
 let minutes = 24;
 let seconds = 59;
 
 
-// display
+// initial display
 window.onload = () => {
-    // document.getElementById("minutes").innerHTML = minutes;
-    // document.getElementById("seconds").innerHTML = seconds;
     workTitle.style = activeTitle;
 }
 
 
+const pauseTimer = () => {
+        playing = false;
+        // changing buttons play and pause
+        document.getElementById("play-pause").classList.add("fa-play");
+        document.getElementById("play-pause").classList.remove("fa-pause");
 
-const restartingTime = () => {
-    document.getElementById("restart").addEventListener("click", function(){
-        console.log("sei nãoooo")
+        // for temporaly pause
+        clearInterval(timer);
+}
 
-        if(working === true){
-            minutes = 27;
+const playTimer = () => {
+    playing = true;
+    // changing buttons play and pause
+    document.getElementById("play-pause").classList.remove("fa-play");
+    document.getElementById("play-pause").classList.add("fa-pause");
 
+    // the principal rule
+    timer = setInterval(timerFunction, 5);
+}
+
+
+const restartingTime = () => {       
+
+        if(working === false){
             
-        }else{
+            // restarting break for 5 minutes
             minutes = 4;
+            seconds = 59;
+            document.getElementById("minutes").innerHTML = "5";
+            document.getElementById("seconds").innerHTML = "00"; 
+        }else{
+            // restarting work for 25 minutes
+            minutes = 24;
+            seconds = 59;
+            document.getElementById("minutes").innerHTML = "25";
+            document.getElementById("seconds").innerHTML = "00";   
         }
 
-    })
+        // for pause the countdown after restart
+        pauseTimer();      
 };
 
 
-
-
-
-
-
-
-
-
-
-
 // countdown
-
     let timerFunction = () => {
         // starting with work 25 minutes
         document.getElementById("minutes").innerHTML = minutes;
         document.getElementById("seconds").innerHTML = seconds;    
 
-        console.log(seconds)
-
         // starting here
-        workingMinutes = true;
         seconds = seconds - 1;
         
         // when every work minute is over
         if(seconds === 0){
-            
             minutes = minutes - 1;
             seconds = 59;
 
-            // when the 25 minutes ends
+            // when all minutes ends
             if(minutes === -1){
                 working = !working
 
                 if(working === false){
-                    workingMinutes = false
                     // changing the word in focus
                     workTitle.style = inactiveTitle;
                     breakTitle.style = activeTitle;
@@ -91,96 +96,19 @@ const restartingTime = () => {
                     breakTitle.style = inactiveTitle;
                     // starting work for 25 minutes
                     minutes = 24;
-                }
+            }
         }
-    }
-
-    restartingTime();
+    }   
 }
 
 
-
-
-
-
-//     let timerFunction = () => {
-//         // starting with work 25 minutes
-//         document.getElementById("minutes").innerHTML = workMinutes;
-//         document.getElementById("seconds").innerHTML = seconds;    
-
-//         console.log(seconds)
-
-//         // starting here
-        
-//         seconds = seconds - 1;
-        
-//         // when every work minute is over
-//         if(seconds === 0){
-            
-//             workMinutes = workMinutes - 1;
-//             seconds = 59;
-
-//             // when the 25 minutes ends
-//             if(workMinutes === -1){
-//                 working = false
-
-//                 if(working === false){
-//                     // changing the word in focus
-//                     workTitle.style = inactiveTitle;
-//                     breakTitle.style = activeTitle;
-//                     // starting break for 5 minutes
-//                     workMinutes = breakMinutes;
-
-
-//                     if(breakMinutes === -1){
-//                     working = true
-//                     // changing the word in focus
-//                     workTitle.style = activeTitle;
-//                     breakTitle.style = inactiveTitle;
-//                     // starting work for 25 minutes
-//                     breakMinutes = workMinutes;
-//                 }
-//             } 
-//         }
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // starting timer
+// code used on icons for play and pause by onclick
 const startingTimer = () => {
     
     if(playing === false){
-        playing = true;
-        // changing buttons play and pause
-        document.getElementById("play-pause").classList.remove("fa-play");
-        document.getElementById("play-pause").classList.add("fa-pause");
-
-        // seconds = 59;
-        // minutes = minutes -1
-
-        // starting countdown 1 sec
-        timer = setInterval(timerFunction, 5); 
-    }else{
-
-        playing = false;
-        // changing buttons play and pause
-        document.getElementById("play-pause").classList.add("fa-play");
-        document.getElementById("play-pause").classList.remove("fa-pause");
-
-        clearInterval(timer);
+        playTimer(); 
+    }else {
+        pauseTimer();
     }
-
-
 }

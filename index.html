@@ -11,48 +11,54 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!-- principal container -->
+    <div class="w-screen h-screen max-w-[600px] max-h-[750px] bg-blue-300 flex flex-col items-center justify-between">
+        
+        <div class="bg-green-200 w-full h-full flex flex-col items-center justify-center gap-4">
+        <header>
+            <!-- title -->
+            <h1>Pomodoro</h1>
+        </header>
 
-    <header>
-        <!-- title -->
-        <h1>Pomodoro</h1>
-    </header>
+        <main class="flex flex-col gap-4">
+            <!-- container painel -->
+            <div class="bg-red-500 flex gap-4 justify-center">
+                <p id="work" class="bg-amber-500 p-2 rounded-md">work</p>
+                <p id="break" class="bg-amber-500 p-2 rounded-md">break</p>
+            </div>
 
-    <main>
-        <!-- container painel -->
-        <div class="bg-red-500">
-            <p id="work" class="">work</p>
-            <p id="break">break</p>
-        </div>
+            <!-- container timer -->
+            
+            <div>
+                    <!-- time -->
+                    <div class="flex text-7xl">
+                    <p id="minutes">25</p>  
+                    <p>:</p>
+                    <p id="seconds">00</p>
+                    </div>
+            </div>
+            
 
-        <!-- container timer -->
-        <div>
-            <!-- circle -->
-           <div>
-                <!-- time -->
-                <div>
-                  <p id="minutes">25</p>  
-                  <p>:</p>
-                  <p id="seconds">00</p>
-                </div>
-           </div>
-        </div>
-
-        <!-- controls -->
-        <div>
-            <button id="" onclick="startingTimer()">
-                <i id="play-pause" class="fa-solid fa-play"></i>
-                <!-- <i id="pause" class="fa-solid fa-pause"></i> -->
-            </button>
-            <a href="./">
-                <button id="restart">
-                 <i class="fa-solid fa-rotate-left"></i>
+            <!-- controls -->
+            <div class="flex gap-4 justify-center text-lg">
+                <button id="" onclick="startingTimer()">
+                    <i id="play-pause" class="fa-solid fa-play"></i>                
                 </button>
-            </a>
+                <button id="restart" onclick="restartingTime()">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+        </main>
         </div>
-
-    </main>
-
-
+        <footer class="pb-1 text-xs text-violet-800">
+            <p>Developed by
+                <a href="https://github.com/thaismoreiradev" target="_blank" rel="noopener noreferrer">Thais
+                    Moreira
+                </a>
+            </p>
+            
+        </footer>
+</div>
     <script src="./app.js"></script>
 </body>
 </html>
