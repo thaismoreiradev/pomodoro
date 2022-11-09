@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./*.html"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'Lily': ['"Lily Script One"', 'cursive'],
+      },
+    },
   },
   plugins: [],
 }

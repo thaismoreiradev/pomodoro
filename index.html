@@ -4,34 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
+
     <link rel="stylesheet" href="./main.css">
+    <!-- title font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <!-- principal container -->
-    <div class="w-screen h-screen max-w-[600px] max-h-[750px] bg-blue-300 flex flex-col items-center justify-between">
+    <div class="w-screen h-screen max-w-[600px] max-h-[750px] bg-blue-300 flex flex-col m-auto items-center justify-between">
         
         <div class="bg-green-200 w-full h-full flex flex-col items-center justify-center gap-4">
         <header>
             <!-- title -->
-            <h1>Pomodoro</h1>
+            <h1 class="font-Lily text-4xl">Pomodoro</h1>
         </header>
 
         <main class="flex flex-col gap-4">
             <!-- container painel -->
             <div class="bg-red-500 flex gap-4 justify-center">
-                <p id="work" class="bg-amber-500 p-2 rounded-md">work</p>
-                <p id="break" class="bg-amber-500 p-2 rounded-md">break</p>
+                <p id="work" class="bg-amber-500 p-2 rounded-md w-full text-center">work</p>
+                <p id="break" class="bg-amber-500 p-2 rounded-md w-full text-center">break</p>
             </div>
 
             <!-- container timer -->
             
-            <div>
+            <div class="rounded-full  border-2 border-black p-8 font-semibold">
                     <!-- time -->
-                    <div class="flex text-7xl">
+                    <div class="flex text-7xl w-44 items-center bg-pink-400">
                     <p id="minutes">25</p>  
                     <p>:</p>
                     <p id="seconds">00</p>
@@ -40,8 +46,8 @@
             
 
             <!-- controls -->
-            <div class="flex gap-4 justify-center text-lg">
-                <button id="" onclick="startingTimer()">
+            <div class="flex gap-4 justify-center text-2xl">
+                <button onclick="startingTimer()">
                     <i id="play-pause" class="fa-solid fa-play"></i>                
                 </button>
                 <button id="restart" onclick="restartingTime()">

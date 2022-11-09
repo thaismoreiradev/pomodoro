@@ -74,6 +74,14 @@ const restartingTime = () => {
         // starting here
         seconds = seconds - 1;
         
+        // display adjust
+        if(seconds <= 9){
+            document.getElementById("seconds").innerHTML = `0${seconds}`;
+        }
+        if(minutes <= 9){
+            document.getElementById("minutes").innerHTML = `0${minutes}`
+        }
+
         // when every work minute is over
         if(seconds === 0){
             minutes = minutes - 1;
