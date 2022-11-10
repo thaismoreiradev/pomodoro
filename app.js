@@ -92,6 +92,10 @@ const restartingTime = () => {
                 working = !working
 
                 if(working === false){
+
+                    document.getElementById("alarm").play();
+                    
+
                     // changing the word in focus
                     workTitle.style = inactiveTitle;
                     breakTitle.style = activeTitle;
