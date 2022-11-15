@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
-
     <link rel="stylesheet" href="./main.css">
     <!-- title font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,65 +13,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
-<body>
+
+<body class="bg-red-800">
     <!-- principal container -->
-    <div class="w-screen h-screen max-w-[600px] max-h-[750px] bg-blue-300 flex flex-col m-auto items-center justify-between">
+    <div class="w-screen h-screen max-w-[600px] max-h-[750px] flex flex-col m-auto items-center justify-between">
         
-        <div class="bg-green-200 w-full h-full flex flex-col items-center justify-center gap-4">
+        <div class="w-full h-full flex flex-col items-center justify-center gap-4">
         <header>
             <!-- title -->
-            <h1 class="font-Lily text-4xl xs:text-5xl">Pomodoro</h1>
+            <h1 class="font-Lily text-4xl xs:text-5xl text-red-200">Pomodoro</h1>
         </header>
 
-        <main class="flex flex-col gap-4">
+        <main class="flex flex-col gap-6">
             <!-- container painel -->
-            <div class="bg-red-500 flex gap-3 justify-center">
-                <p id="work" class="bg-amber-500 p-2 rounded-md w-full text-center">work</p>
-                <p id="break" class="bg-amber-500 p-2 rounded-md w-full text-center">break</p>
+            <div class="flex gap-3 justify-center">
+                <p id="work" class="bg-red-200 p-2 rounded-md w-full text-center text-red-800">work</p>
+                <p id="break" class="bg-red-200 p-2 rounded-md w-full text-center text-red-800">break</p>
             </div>
 
             <!-- container timer -->
-            
-            <div class="rounded-full  border-2 border-black p-8 font-semibold">
+                    <div class="rounded-full  border-2 border-red-200 p-8 font-semibold text-red-200">
                     <!-- time -->
-                    <div class="flex text-7xl w-44 items-center bg-pink-400">
+                    <div class="flex text-7xl w-44 items-center">
                     <p id="minutes">25</p>  
                     <p>:</p>
                     <p id="seconds">00</p>
                     </div>
             </div>
-            
 
             <!-- controls -->
-            <div class="flex gap-4 justify-center text-2xl">
-                <button onclick="startingTimer()">
+            <div class="flex gap-4 justify-center text-2xl text-red-200">
+                <button id="play-pause-btn">
                     <i id="play-pause" class="fa-solid fa-play"></i>                
                 </button>
-                <button id="restart" onclick="restartingTime()">
+                <button id="restart">
                     <i class="fa-solid fa-rotate-left"></i>
                 </button>
             </div>
         </main>
         </div>
-        <footer class="pb-1 text-xs text-violet-800">
+
+        <footer class="pb-1 text-xs text-red-200">
             <p>Developed by
                 <a href="https://github.com/thaismoreiradev" target="_blank" rel="noopener noreferrer">Thais
                     Moreira
                 </a>
-            </p>
-            
+            </p>            
         </footer>
 </div>
 
-<audio id="alarm">
-    <source src="./Cartoon Cowbell.mp3" type="audio/mp3" />
-    seu navegador não suporta HTML5
-</audio>
-
-
-
+    <!-- audio for alarm script -->
+    <audio id="alarm">
+        <source src="./Cartoon Cowbell.mp3" type="audio/mp3" />
+        seu navegador não suporta HTML5
+    </audio>
     <script src="./app.js"></script>
 </body>
 </html>

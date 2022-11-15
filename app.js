@@ -1,8 +1,10 @@
 // variables
 let workTitle = document.querySelector("#work");
 let breakTitle = document.querySelector("#break");
-let activeTitle = ("font-weight: bolder")
-let inactiveTitle = ("font-weight: normal")
+let activeTitle = ("font-weight: bolder");
+let inactiveTitle = ("font-weight: normal");
+const playPauseButton = document.querySelector("#play-pause-btn");
+const restartButton = document.querySelector("#restart")
 
 // for change the icon between play and pause
 let playing = false;
@@ -15,19 +17,16 @@ let timer;
 let minutes = 24;
 let seconds = 59;
 
-
 // initial display
 window.onload = () => {
     workTitle.style = activeTitle;
 }
-
 
 const pauseTimer = () => {
         playing = false;
         // changing buttons play and pause
         document.getElementById("play-pause").classList.add("fa-play");
         document.getElementById("play-pause").classList.remove("fa-pause");
-
         // for temporaly pause
         clearInterval(timer);
 }
@@ -37,20 +36,16 @@ const playTimer = () => {
     // changing buttons play and pause
     document.getElementById("play-pause").classList.remove("fa-play");
     document.getElementById("play-pause").classList.add("fa-pause");
-
     // the principal rule
     timer = setInterval(timerFunction, 5);
 }
 
-
-const restartingTime = () => {       
-
+const restartingTime = () => {
         if(working === false){
-            
             // restarting break for 5 minutes
             minutes = 4;
             seconds = 59;
-            document.getElementById("minutes").innerHTML = "5";
+            document.getElementById("minutes").innerHTML = "05";
             document.getElementById("seconds").innerHTML = "00"; 
         }else{
             // restarting work for 25 minutes
@@ -59,10 +54,24 @@ const restartingTime = () => {
             document.getElementById("minutes").innerHTML = "25";
             document.getElementById("seconds").innerHTML = "00";   
         }
-
         // for pause the countdown after restart
         pauseTimer();      
 };
+
+
+// to play the alarm when every cycle is finish
+const playAlarm = () => {
+    document.getElementById("alarm").play();
+    pauseTimer();
+
+    // to block the click while its ringing
+    playPauseButton.removeEventListener("click", startingTimer)
+    restartButton.removeEventListener("click", restartingTime)
+
+    // to play again 
+    setTimeout(playTimer, 4000);
+    setTimeout(addEventsButtons, 4000);    
+}
 
 
 // countdown
@@ -90,11 +99,9 @@ const restartingTime = () => {
             // when all minutes ends
             if(minutes === -1){
                 working = !working
+                playAlarm();
 
-                if(working === false){
-
-                    document.getElementById("alarm").play();
-                    
+                if(working === false){                   
 
                     // changing the word in focus
                     workTitle.style = inactiveTitle;
@@ -124,3 +131,11 @@ const startingTimer = () => {
         pauseTimer();
     }
 }
+
+
+const addEventsButtons = () => {
+    playPauseButton.addEventListener("click", startingTimer);
+    restartButton.addEventListener("click", restartingTime);
+}
+
+addEventsButtons();
