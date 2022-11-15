@@ -37,7 +37,7 @@ const playTimer = () => {
     document.getElementById("play-pause").classList.remove("fa-play");
     document.getElementById("play-pause").classList.add("fa-pause");
     // the principal rule
-    timer = setInterval(timerFunction, 5);
+    timer = setInterval(timerFunction, 1000);
 }
 
 const restartingTime = () => {
